@@ -5,7 +5,6 @@ function App() {
       <h1>Chahdi Abdellah and Abderrahim Agoummad</h1>
       <h1>Chahdi Abdellah</h1>
       <h1>Chahdi Abdellah</h1>
-      <h1>ANOTHER MODIFICATION</h1>
     </div>
   );
 }
