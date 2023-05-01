@@ -17,7 +17,9 @@ class ParkingFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'city' => fake()->city(),
+            'nbrPlace' => '0',
+            'nbrPlaceLibre' => '0',
         ];
     }
 }

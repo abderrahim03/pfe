@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Parking extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'city',
+        'nbrPlace',
+        'nbrPlaceLibre',
+    ];
+
+    public function trafParkings()
+    {
+        return $this->belongsTo(TarifParking::class);
+    }
+
+    public function stationnements()
+    {
+        return $this->hasMany(Stationnements::class);
+    }
 }

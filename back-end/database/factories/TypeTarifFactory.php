@@ -16,8 +16,14 @@ class TypeTarifFactory extends Factory
      */
     public function definition(): array
     {
+        $types = [
+            'Tarif horaire',
+            'Tarif forfaitaire',
+            'Système de quotas à dépenser',
+            'Système à abonnement ',
+        ];
         return [
-            //
+            'type' => fake()->randomElement($types)
         ];
     }
 }

@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('tarif_parkings', function (Blueprint $table) {
             $table->id();
             $table->float('prix');
-            $table->foreignId('parck')->constrained('parkings');
+            $table->foreignId('park')->constrained('parkings');
             $table->timestamps();
         });
-    }
+    } 
 
-    /**
+    /** 
      * Reverse the migrations.
      */
     public function down(): void
