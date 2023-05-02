@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Stationnements;
+use App\Models\Stationnement;
 use Illuminate\Http\Request;
 
 class StationnementController extends Controller
@@ -15,7 +15,7 @@ class StationnementController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'data' => Stationnements::all(),
+            'data' => Stationnement::all(),
         ], 200, ['Status' => 'Success']);
     }
 
@@ -32,30 +32,30 @@ class StationnementController extends Controller
             'TarifPark' => 'required',
         ]);
 
-        return response()->json(Stationnements::create($request->all()));
+        return response()->json(Stationnement::create($request->all()));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Stationnements $stationnements)
+    public function show(Stationnement $Stationnement)
     {
-        return response()->json($stationnements);
+        return response()->json($Stationnement);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Stationnements $stationnements)
+    public function update(Request $request, Stationnement $Stationnement)
     {
-        return response()->json($stationnements->update($request->all()));
+        return response()->json($Stationnement->update($request->all()));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stationnements $stationnements)
+    public function destroy(Stationnement $Stationnement)
     {
-        return response()->json($stationnements->delete());
+        return response()->json($Stationnement->delete());
     }
 }
