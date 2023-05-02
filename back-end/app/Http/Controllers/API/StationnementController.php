@@ -11,6 +11,7 @@ class StationnementController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
         return response()->json([
@@ -38,6 +39,7 @@ class StationnementController extends Controller
     /**
      * Display the specified resource.
      */
+
     public function show(Stationnement $Stationnement)
     {
         return response()->json($Stationnement);

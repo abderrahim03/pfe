@@ -4,6 +4,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ParkingController;
+use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\StationnementController;
 use App\Http\Controllers\API\TarifParkingController;
 use App\Http\Controllers\API\TypeTarifController;
@@ -29,3 +30,5 @@ Route::apiResource('users', UserController::class);
 Route::apiResource('type-tarifs', TypeTarifController::class);
 Route::apiResource('tarif-parkings', TarifParkingController::class);
 Route::apiResource('Stationnements', StationnementController::class);
+
+Route::post('service', [ServiceController::class, 'getNbrStat']);
