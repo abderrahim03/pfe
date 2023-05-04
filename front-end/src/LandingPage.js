@@ -37,6 +37,7 @@ const LandingPage = () => {
                     <Route path='/consulterDepenses' element={<ConsulterDepenses />}></Route>
                     <Route path='/serviceNombre' element={<ServiceNombre />}></Route>
                 </Routes>
+
             </div>
         </>
     );
