@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useParams } from 'react-router-dom';
 import AjoutStationnements from './component/AjoutStationnements';
 import ChercherParking from './component/ChercherParking';
 import ConsulterDepenses from './component/ConsulterDepenses';
 import ServiceNombre from './component/ServiceNombre';
+import ShowPage from './component/ShowPage';
 
 const LandingPage = () => {
+    const id = useParams()
     return (
         <>
             <div>
@@ -35,7 +37,8 @@ const LandingPage = () => {
                     <Route path='/ajoutStationnements' element={<AjoutStationnements />}></Route>
                     <Route path='/chercherParking' element={<ChercherParking />}></Route>
                     <Route path='/consulterDepenses' element={<ConsulterDepenses />}></Route>
-                    <Route path='/serviceNombre' element={<ServiceNombre />}></Route>
+                    <Route path='/serviceNombre' element={<ServiceNombre />} />
+                    <Route path='/show/:id' element={<ShowPage />} />
                 </Routes>
             </div>
         </>
