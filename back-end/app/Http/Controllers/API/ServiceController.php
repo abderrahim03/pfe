@@ -15,7 +15,9 @@ class ServiceController extends Controller
     public function getNbrStat(Request $request)
     {
         
-        $NbrStat = Stationnement::where('park', $request->id)->count();
+        $NbrStat = Stationnement::where('user', $request->user)
+            ->where('park', $request->park)
+            ->where('dateStat', $request->dateStat)->count();
 
         return response()->json([  
             'Status' => 'Success',
