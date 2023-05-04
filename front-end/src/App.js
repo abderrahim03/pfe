@@ -1,6 +1,6 @@
 import React from 'react'
 import "./index.css"
-import Parking from "./Parking.jpg"
+import Parking from "./images/Parking.jpg"
 function App() {
   return (
     <>

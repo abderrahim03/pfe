@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import AjoutStationnements from './AjoutStationnements';
-import ChercherParking from './ChercherParking';
-import ConsulterDepenses from './ConsulterDepenses';
-import ServiceNombre from './ServiceNombre';
+import AjoutStationnements from './component/AjoutStationnements';
+import ChercherParking from './component/ChercherParking';
+import ConsulterDepenses from './component/ConsulterDepenses';
+import ServiceNombre from './component/ServiceNombre';
 
 const LandingPage = () => {
     return (
