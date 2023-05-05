@@ -1,5 +1,6 @@
 import React from 'react'
 import "./index.css"
+import "./App.css"
 import Parking from "./images/Parking.jpg"
 function App() {
   return (

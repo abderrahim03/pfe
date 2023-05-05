@@ -6,6 +6,7 @@ const ChercherParking = () => {
     const [parkings, setParkings] = useState([])
     const [TarifParks, setTarifParks] = useState([])
     const [prix, setPrix] = useState('')
+    const [parks, setParks] = useState([])
     const [Fparkings, setFParkings] = useState([])
     const [isSearching, setIsSearching] = useState(false)
     const  getParkings = async () => {
@@ -24,19 +25,41 @@ const ChercherParking = () => {
         getTarifParks()
     }, [])
 
-    const getprix = () => {
-        let Fdata = TarifParks.filter(TarifPark => TarifPark.prix <= prix)
-        console.log(Fdata);
+    const Searching = () => {
+        setIsSearching(true)
+        let Fdata = []
+        for (let parking in parkings) {
+            if (parkings[parking].nbrPlaceLibre > 0) {
+                let F = TarifParks.filter(TarifPark => TarifPark.prix <= prix && TarifPark.park == parkings[parking].id)
+                Fdata.push(F)
+            }
+        }
+        let Parks = []
+        for (const FiletrdData of Fdata) {
+            for (const data of FiletrdData) {
+                for (const parking of parkings) {
+                    if (parking.id == data.id) {
+                        Parks.push(parking)
+                    }
+                }
+            }
+        }
+        setParks(Parks)
     }
 
     return (
         <div>
             <h1>Chercher Parking</h1>
-            <input type='text' placeholder='Saisir le prix' onChange={e => setPrix(e.target.value)}/> <button type='button' onClick={getprix}>Chercher</button>
+            <input type='text' placeholder='Saisir le prix' onChange={e => setPrix(e.target.value)}/>
+            <button type='button' onClick={Searching} className='mx-3 btn btn-primary'>Chercher</button>
 
             <ul>
                 {
-                    isSearching ? 'searching' : parkings.map((parking) => {
+                    isSearching ? parks.map((park) => { 
+                        return (
+                            <li key={park.id}><a href={`/show/${park.id}`}>{park.city}</a></li>
+                        )
+                    }) : parkings.map((parking) => {
                         return (
                             <li key={parking.id}><a href={`/show/${parking.id}`}>{parking.city}</a></li>
                         )
