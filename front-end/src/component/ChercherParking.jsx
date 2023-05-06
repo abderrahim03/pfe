@@ -7,7 +7,6 @@ const ChercherParking = () => {
     const [TarifParks, setTarifParks] = useState([])
     const [prix, setPrix] = useState('')
     const [parks, setParks] = useState([])
-    const [Fparkings, setFParkings] = useState([])
     const [isSearching, setIsSearching] = useState(false)
     const  getParkings = async () => {
         await axios.get('http://127.0.0.1:8000/api/parkings').then((res, req) => {
@@ -34,6 +33,7 @@ const ChercherParking = () => {
                 Fdata.push(F)
             }
         }
+        console.log(Fdata);
         let Parks = []
         for (const FiletrdData of Fdata) {
             for (const data of FiletrdData) {
