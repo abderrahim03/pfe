@@ -6,6 +6,7 @@ import ConsulterDepenses from './component/ConsulterDepenses';
 import ServiceNombre from './component/ServiceNombre';
 import ShowPage from './component/ShowPage';
 import Example from './Navbar';
+import Login from './Login';
 const LandingPage = () => {
     const id = useParams()
     return (
@@ -17,6 +18,7 @@ const LandingPage = () => {
                     <Route path='/consulterDepenses' element={<ConsulterDepenses />}></Route>
                     <Route path='/serviceNombre' element={<ServiceNombre />} />
                     <Route path='/show/:id' element={<ShowPage />} />
+                    <Route path='/login' element={<Login />} />
                 </Routes>
 
             </div>

@@ -4,10 +4,11 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 
 const navigation = [
-  { name: 'ajout Stationnements', href: '/ajoutStationnements', current: true },
-  { name: 'chercher Parking', href: '/chercherParking', current: false },
-  { name: 'consulterDepenses', href: '/consulterDepenses', current: false },
-  { name: 'serviceNombre', href: '/serviceNombre', current: false },
+  { name: 'Ajout Stationnements', href: '/ajoutStationnements', current: true },
+  { name: 'Chercher Parking', href: '/chercherParking', current: false },
+  { name: 'ConsulterDepenses', href: '/consulterDepenses', current: false },
+  { name: 'ServiceNombre', href: '/serviceNombre', current: false },
+  { name: 'Login', href: '/login', current: false },
 ]
 
 function classNames(...classes) {
