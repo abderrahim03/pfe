@@ -2,11 +2,9 @@ import React from 'react'
 import "./index.css"
 import "./App.css"
 import Parking from "./images/Parking.jpg"
-import Example from './Navbar';
 function App() {
   return (
     <>
-      <Example />
       <div className='flex bg-indigo-950 max-w-7xl pt-36 '>
         <div className='w-1/2'>
           <div className=' font-mono text-6xl text-slate-200  max-w-lg ml-24 mt-24 font-bold'>

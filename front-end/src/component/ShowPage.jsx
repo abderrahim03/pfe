@@ -41,13 +41,12 @@ const ShowPage = () => {
       {
         parkings.map(parking => {
             if (parking.id == id) {
-                return (
-                  <div key={parking.id} className=" max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{parking.city}</h5>
+                return ( 
+                  <div key={parking.id} className="   ml-10 mt-10 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <h5 className="mb-2 text-4xl font-bold tracking-tight text-emerald-500 dark:text-white">{parking.city}</h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">{parking.nbrPlaceLibre}</p>
                     <p className="font-normal text-gray-700 dark:text-gray-400">{TarifPark.prix}</p>
                   </div>
-                  
                 )
             }
         })

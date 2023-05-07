@@ -37,21 +37,27 @@ const ConsulterDepenses = () => {
     let S = 0
     return (
         <div>
-            <h1>Consulter Depenses</h1>
-            Du:
-            <input type='date' value={du} onChange={e => setDu(e.target.value)} />
-            Au:
-            <input type='date' value={au} onChange={e => setAu(e.target.value)} />
-
-            <button onClick={ConsulterDepenses}>Consulter Depenses</button>
-            <table>
+            <h1 className='text-center text-5xl mt-4 text-sky-500'>Consulter Depenses</h1>
+            <div className=' flex mt-24'>
+                    <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+        Du:
+    </div>
+            <input type='date' value={du} onChange={e => setDu(e.target.value)} className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' /></div><br/>
+            <div className=' flex'>
+                    <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+        Au:
+    </div>  
+            <input type='date' value={au} onChange={e => setAu(e.target.value)} className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' /></div><br/>
+            <button onClick={ConsulterDepenses} className=' bg-gradient-to-r from-cyan-200   to-emerald-400  rounded-full px-8 py-3 font-bold '>Consulter Depenses</button><br/><br/><br/>
+            <div className=' text-center ml-80'>
+                <table className='border-collapse border border-slate-500  text-center bg-gradient-to-r from-cyan-200   to-emerald-400'>
                 <thead>
-                    <tr>
-                        <th>nom du parking</th>
-                        <th>ville</th>
-                        <th>prix</th>
-                        <th>nombre unité</th>
-                        <th>montant</th>
+                    <tr className=' text-xl text-blue-950' >
+                        <th  className='border border-slate-600 p-4'>Nom du parking</th>
+                        <th className='border border-slate-600  p-4'>Ville</th>
+                        <th className='border border-slate-600 p-4'>Prix</th>
+                        <th className='border border-slate-600 p-4'>Nombre unité</th>
+                        <th className='border border-slate-600 p-4 '>Montant</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +68,7 @@ const ConsulterDepenses = () => {
                                     if (stat.dateStat <= au && stat.dateStat >= du) {
                                         S = S + stat.nbrUnit * TarifPark.prix
                                         return (
-                                            <tr>
+                                            <tr >
                                                 <td>{park.name}</td>
                                                 <td>{park.city}</td>
                                                 <td>{TarifPark.prix}</td>
@@ -78,12 +84,12 @@ const ConsulterDepenses = () => {
                                 for (const TarifPark of TarifParks) {
                                     S = S + stat.nbrUnit * TarifPark.prix
                                     return (
-                                        <tr>
-                                            <td>{park.name}</td>
-                                            <td>{park.city}</td>
-                                            <td>{TarifPark.prix}</td>
-                                            <td>{stat.nbrUnit}</td>
-                                            <td>{stat.nbrUnit * TarifPark.prix}</td>
+                                        <tr className=''>
+                                            <td className='border border-slate-700  text-stone-800 text-blue-950 ' >{park.name}</td>
+                                            <td className='border border-slate-700  text-stone-800 text-blue-950' >{park.city}</td>
+                                            <td className='border border-slate-700  text-stone-800 text-blue-950' >{TarifPark.prix}</td>
+                                            <td className='border border-slate-700  text-stone-800 text-blue-950' >{stat.nbrUnit}</td>
+                                            <td className='border border-slate-700  text-stone-800 text-blue-950' >{stat.nbrUnit * TarifPark.prix}</td>
                                         </tr>
                                     )
                                 }
@@ -92,9 +98,11 @@ const ConsulterDepenses = () => {
                     }
                     
                 </tbody>
-            </table><br />
-            Total: {S} dh
-
+            </table>
+            </div>
+            <div className='mt-10 text-center text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-900'>
+                Total: {S} dh
+            </div>   
         </div>
     );
 };
