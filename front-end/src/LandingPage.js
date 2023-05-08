@@ -5,7 +5,8 @@ import ChercherParking from './component/ChercherParking';
 import ConsulterDepenses from './component/ConsulterDepenses';
 import ServiceNombre from './component/ServiceNombre';
 import ShowPage from './component/ShowPage';
-import Register from './Register';
+import Register from './login forms/Register';
+import Login from './login forms/Login';
 const LandingPage = () => {
     const id = useParams()
     return (
@@ -18,6 +19,7 @@ const LandingPage = () => {
                     <Route path='/serviceNombre' element={<ServiceNombre />} />
                     <Route path='/show/:id' element={<ShowPage />} />
                     <Route path='/register' element={<Register />} />
+                    <Route path='/login' element={<Login />} />
                 </Routes>
 
             </div>

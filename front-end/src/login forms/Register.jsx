@@ -1,14 +1,16 @@
 import React from 'react';
-import img from './images/Loginblur.jpg'
+import img from '../images/Loginblur.jpg'
 
-const Login = () => {
+const Register = () => {
     const styles = {
     backgroundImage: `url(${img})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   };
     return (
-        <div className='text-center w-11/12 ml-16 ' style={styles} >
+        <>
+        <div className='2xl:ml-80'>
+            <div className='text-center w-11/12 ml-16 max-w-6xl' style={styles} >
             <form className=' mx-52 pt-52  pb-28'>
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
@@ -50,7 +52,11 @@ const Login = () => {
 </form>
             
         </div>
+        </div>
+        
+        </>
+        
     );
 };
 
-export default Login;
+export default Register;

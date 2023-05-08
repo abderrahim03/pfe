@@ -9,6 +9,7 @@ const navigation = [
   { name: 'ConsulterDepenses', href: '/consulterDepenses', current: false },
   { name: 'ServiceNombre', href: '/serviceNombre', current: false },
   { name: 'Register', href: '/register', current: false },
+  { name: 'login', href: '/login', current: false },
 ]
 
 function classNames(...classes) {
