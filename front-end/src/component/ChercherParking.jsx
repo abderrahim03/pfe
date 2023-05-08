@@ -66,14 +66,14 @@ const ChercherParking = () => {
                     isSearching ? parks.map((park) => { 
                         return (
                         <div  className=" mt-10 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                            <li className="mb-2 text-3xl font-bold tracking-tight text-emerald-500 dark:text-white" key={park.id}>{park.city}</li>
+                            <li className="mb-2 text-3xl font-bold tracking-tight text-emerald-500 dark:text-white" key={park.id}>{park.name}</li>
                             <button type="button" class="text-white mt-10  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" ><a href={`/show/${park.id}`}>Detail</a></button>
                         </div>    
                         )
                     }) : parkings.map((parking) => {
                         return (
                         <div  className="mt-10 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                            <li className=" mb-2 text-3xl font-bold tracking-tight text-emerald-400 dark:text-white" key={parking.id}><a href={`/show/${parking.id}`}>{parking.city}</a></li>
+                            <li className=" mb-2 text-3xl font-bold tracking-tight text-emerald-400 dark:text-white" key={parking.id}><a href={`/show/${parking.id}`}>{parking.name}</a></li>
                         </div>
                         )
                     })

@@ -43,7 +43,7 @@ const ShowPage = () => {
             if (parking.id == id) {
                 return ( 
                   <div key={parking.id} className="ml-32 mt-20 max-w-lg  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <div className=' bg-emerald-500 rounded-lg text-white text-center py-5 w-full font-mono text-3xl'>Nom du parking</div>
+                    <div className=' bg-emerald-500 rounded-lg text-white text-center py-5 w-full font-mono text-3xl'>{parking.name}</div>
                     <div className='flex'>
                     <div className='p-8 mt-10 mb-8'>
                     <div className=' flex pb-2'><span className='text-lg mr-10'>Ville:</span><h5 className="ml-12">{parking.city}</h5></div>

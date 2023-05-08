@@ -83,7 +83,7 @@ const AjoutStationnements = () => {
                     {
                         parkings.map((parking) => {
                             return (
-                                <option key={parking.id} value={parking.id}>{parking.city}</option>
+                                <option key={parking.id} value={parking.id}>{parking.name}</option>
                             )
                         })
                     }
