@@ -68,7 +68,7 @@ const ServiceNombre = () => {
             <div className='text-center'> <button onClick={handelClick} className=' bg-gradient-to-r from-cyan-200   to-emerald-400  rounded-full px-8 py-3 font-bold '>Calculer</button></div><br /><br />
 
 <div  className='mt-10 text-center text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-900'>
-                Le nombre de stationnements effectuees est : {nbrStat} Stationements.
+                Le nombre de stationnements effectués est : {nbrStat} Stationnements.
 
 </div>
         </div>
