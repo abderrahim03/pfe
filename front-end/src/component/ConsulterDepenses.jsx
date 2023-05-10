@@ -64,18 +64,20 @@ const ConsulterDepenses = () => {
                     {
                         isFiltering ? Stationnements.map(stat => {
                             for (const park of parkings) {
-                                for (const TarifPark of TarifParks) {
-                                    if (stat.dateStat <= au && stat.dateStat >= du) {
-                                        S = S + stat.nbrUnit * TarifPark.prix
-                                        return (
-                                            <tr >
-                                                <td>{park.name}</td>
-                                                <td>{park.city}</td>
-                                                <td>{TarifPark.prix}</td>
-                                                <td>{stat.nbrUnit}</td>
-                                                <td>{stat.nbrUnit * TarifPark.prix}</td>
-                                            </tr>
-                                        )
+                                if (park.id == stat.park) {
+                                    for (const TarifPark of TarifParks) {
+                                        if (TarifPark.id == stat.TarifPark && stat.dateStat <= au && stat.dateStat >= du) {
+                                            S = S + stat.nbrUnit * TarifPark.prix
+                                            return (
+                                                <tr >
+                                                    <td>{park.name}</td>
+                                                    <td>{park.city}</td>
+                                                    <td>{TarifPark.prix}</td>
+                                                    <td>{stat.nbrUnit}</td>
+                                                    <td>{stat.nbrUnit * TarifPark.prix}</td>
+                                                </tr>
+                                            )
+                                        }
                                     }
                                 }
                             }

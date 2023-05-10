@@ -16,6 +16,7 @@ class Stationnement extends Model
         'park',
         'TarifPark',
     ];
+    
     public function parkings()
     {
         return $this->belongsTo(Parking::class);

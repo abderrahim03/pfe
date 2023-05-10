@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import img from '../images/imgblur.jpg'
+import { button } from '@material-tailwind/react';
 const AjoutStationnements = () => {
+    const [parkings, setParkings] = useState([])
+    const [TarifParks, setTarifParks] = useState([])
     const [stat, setStat] = useState({
         'dateStat' : '',
         'nbrUnit' : 0,
@@ -9,8 +12,7 @@ const AjoutStationnements = () => {
         'park' : '', 
         'TarifPark' : '',
     })
-    const [parkings, setParkings] = useState([])
-    const [TarifParks, setTarifParks] = useState([])
+    const [id, setId] = useState('')
     const  getParkings = async () => {
         await axios.get('http://127.0.0.1:8000/api/parkings').then((res, req) => {
             setParkings(res.data.data); 
@@ -29,16 +31,19 @@ const AjoutStationnements = () => {
     const handleSubmit = () => {
         axios.post('http://127.0.0.1:8000/api/Stationnements', stat)
         alert('Stationnemet added successfully')
+        
+        console.log(stat);
     }
 
     const handleChanges = (e) => {
         const name = e.target.name
         const value = e.target.value
-
+        
         setStat({
             ...stat, // Spread the existing state object
             [name]: value, // Update the specific property with the new value
-          })
+        })
+        
     }
     const styles = {
     backgroundImage: `url(${img})`,
@@ -59,7 +64,7 @@ const AjoutStationnements = () => {
                 </div><br/>
                 <div className='flex'>
                                     
-                    <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+                    <div  className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
        NBR UNITE
     </div>
                         <input type="number" value={stat.nbrUnit} name='nbrUnit' onChange={handleChanges} className=' ml-10 bg-green-50 border  border-emerald-400 dark:text-emerald-600 text-sm rounded-lg block w-1/2 p-2.5 dark:bg-gray-700 dark:border-green-500'/>
@@ -67,7 +72,7 @@ const AjoutStationnements = () => {
                 </div><br/>
                 
                 <div className=' flex'>
-                    <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+                    <div  className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
         DATE STATION
     </div>
                     <input type="date" value={stat.dateStat} name='dateStat' className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' onChange={handleChanges} />
@@ -91,15 +96,21 @@ const AjoutStationnements = () => {
     <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
         TARIF PARKING 
     </div>
-                <select value={stat.TarifPark} name='park' onChange={handleChanges} className='  ml-10  bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg  dark:border-l-gray-700  focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                <div value={stat.TarifPark} className='  ml-10  bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg  dark:border-l-gray-700  focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
                     {
                         TarifParks.map((TarifPark) => {
-                            return (
-                                <option key={TarifPark.id} value={TarifPark.id}>{TarifPark.id}</option>
-                            )
+                            if (TarifPark.id == stat.park) { 
+                                return (
+                                    <div>
+                                    <p>{TarifPark.prix}</p>
+                                         <input type={'radio'} value={TarifPark.id} name='TarifPark' onChange={handleChanges}/>
+                                    </div>
+                                    
+                                )
+                            }
                         })
                     }
-                </select>
+                </div>
 </div>
                 <br /><br />
                 <div className='text-center'>
