@@ -11,8 +11,6 @@ const AjoutStationnements = () => {
     })
     const [parkings, setParkings] = useState([])
     const [TarifParks, setTarifParks] = useState([])
-
-
     const  getParkings = async () => {
         await axios.get('http://127.0.0.1:8000/api/parkings').then((res, req) => {
             setParkings(res.data.data); 
@@ -93,16 +91,14 @@ const AjoutStationnements = () => {
     <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
         TARIF PARKING 
     </div>
-                <select value={stat.TarifPark} name='TarifPark' onChange={handleChanges} className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg  dark:border-l-gray-700  focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
-
-                {
-                    TarifParks.map((TarifPark) => {
-                        return (
-                            <option key={TarifPark.id} value={TarifPark.id}>{TarifPark.park}</option>
-                        )
-                    })
-                }
-
+                <select value={stat.TarifPark} name='park' onChange={handleChanges} className='  ml-10  bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg  dark:border-l-gray-700  focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                    {
+                        TarifParks.map((TarifPark) => {
+                            return (
+                                <option key={TarifPark.id} value={TarifPark.id}>{TarifPark.id}</option>
+                            )
+                        })
+                    }
                 </select>
 </div>
                 <br /><br />
