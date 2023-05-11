@@ -11,7 +11,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() 
     {
         return response()->json([
             'status' => 'Success',
@@ -28,6 +28,8 @@ class UserController extends Controller
         $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
+            'phone' => 'required',
+            'city' => 'required',
             'email' => 'required',
             'password' => 'required',
         ]);

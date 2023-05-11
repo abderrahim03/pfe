@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Parking;
 use App\Models\Stationnement;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,14 @@ class StationnementController extends Controller
             'TarifPark' => 'required',
         ]);
 
-        return response()->json(Stationnement::create($request->all()));
+        $parking = Parking::where('id', $request->park)->first(); 
+        $UpdateParking = [
+            'nbrPlaceLibre' => $parking->nbrPlaceLibre - 1
+        ];
+        return response()->json([
+            Stationnement::create($request->all()),
+             $parking->update($UpdateParking)
+        ]);
     }
 
     /**

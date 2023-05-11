@@ -20,6 +20,8 @@ class UserFactory extends Factory
         return [
             'firstName' => fake()->firstName(),
             'lastName' => fake()->lastName(),
+            'city' => fake()->city(),
+            'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
             'password' => Str::random(5), // password
         ];

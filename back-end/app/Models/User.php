@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Models;
 
@@ -20,6 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'firstName',
         'lastName',
+        'city',
+        'phone',
         'email',
         'password',
     ];

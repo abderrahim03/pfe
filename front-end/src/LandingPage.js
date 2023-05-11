@@ -5,8 +5,13 @@ import ChercherParking from './component/ChercherParking';
 import ConsulterDepenses from './component/ConsulterDepenses';
 import ServiceNombre from './component/ServiceNombre';
 import ShowPage from './component/ShowPage';
+<<<<<<< HEAD
 import Register from './login forms/Register';
 import Login from './login forms/Login';
+=======
+import Example from './Navbar';
+import Register from './Register';
+>>>>>>> f8a0dd1 (Modify Stationnement Add)
 const LandingPage = () => {
     const id = useParams()
     return (
@@ -19,7 +24,10 @@ const LandingPage = () => {
                     <Route path='/serviceNombre' element={<ServiceNombre />} />
                     <Route path='/show/:id' element={<ShowPage />} />
                     <Route path='/register' element={<Register />} />
+<<<<<<< HEAD
                     <Route path='/login' element={<Login />} />
+=======
+>>>>>>> f8a0dd1 (Modify Stationnement Add)
                 </Routes>
 
             </div>
