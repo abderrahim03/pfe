@@ -40,7 +40,8 @@ class StationnementController extends Controller
         ];
         return response()->json([
             Stationnement::create($request->all()),
-             $parking->update($UpdateParking)
+            $parking->update($UpdateParking),
+            'success' => 'Stationnement Has bieng Created successfully'
         ]);
     }
 
