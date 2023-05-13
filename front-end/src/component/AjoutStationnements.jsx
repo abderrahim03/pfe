@@ -30,14 +30,18 @@ const AjoutStationnements = () => {
     }, [])
     const handleSubmit = () => {
         axios.post('http://127.0.0.1:8000/api/Stationnements', stat).then((res, req) => {
-            let message = res.data.success
-            Swal.fire({
+            Swal.fire({ 
                 position: 'top-center',
                 icon: 'success',
-                title: message,
+                title: res.data.success,
                 showConfirmButton: false,
                 timer: 2500
             })
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: res.data.error,
+              })
         })
     }
 
