@@ -38,10 +38,18 @@ class StationnementController extends Controller
         $UpdateParking = [
             'nbrPlaceLibre' => $parking->nbrPlaceLibre - 1
         ];
-        return response()->json([
-            Stationnement::create($request->all()),
-             $parking->update($UpdateParking)
-        ]);
+        if ($parking->nbrPlaceLibre > 0) {
+            return response()->json([
+                Stationnement::create($request->all()),
+                $parking->update($UpdateParking),
+                'success' => 'Stationnement Has bieng Created successfully'
+            ]);
+        }else {
+            return response()->json([
+                'error' => 'Auccune place libre dans ce parking, chercher vous dans un autre parking'
+            ]);
+        }
+        
     }
 
     /**

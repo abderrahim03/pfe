@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes, useParams } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import AjoutStationnements from './component/AjoutStationnements';
 import ChercherParking from './component/ChercherParking';
 import ConsulterDepenses from './component/ConsulterDepenses';
@@ -11,7 +11,7 @@ const LandingPage = () => {
     const id = useParams()
     return (
         <>
-            <div >
+                <div className='mt-36 '>
                 <Routes>
                     <Route path='/ajoutStationnements' element={<AjoutStationnements />}></Route>
                     <Route path='/chercherParking' element={<ChercherParking />}></Route>
@@ -21,8 +21,8 @@ const LandingPage = () => {
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
                 </Routes>
-
-            </div>
+                </div>
+                
         </>
     );
 };
