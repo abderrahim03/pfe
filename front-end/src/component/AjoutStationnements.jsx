@@ -61,7 +61,7 @@ const AjoutStationnements = () => {
     return (  
          <div>
             <h1 className=' text-center text-5xl mt-4 text-sky-500' >Ajout Stationnements</h1><br/>
-            <form method="post" className='mt-24  rounded-xl p-11' style={styles}>
+            <form method="post" className='mt-24 rounded-xl p-11 for' style={styles}>
                 <div >
                     <div className='flex input-box2'>
                     <div  class="flex-shrink-0  inline-flex  py-2.5 px-4 text-sm font-medium text-center text-white  w-40  ">
