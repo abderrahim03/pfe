@@ -15,6 +15,7 @@ class Stationnement extends Model
         'user',
         'park',
         'TarifPark',
+        'place',
     ];
     
     public function parkings()

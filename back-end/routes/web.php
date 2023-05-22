@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('stat', StatController::class);
+Route::get('generate-pdf', [StatController::class, 'generatePdf'])->name('generatePdf');

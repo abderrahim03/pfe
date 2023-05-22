@@ -17,4 +17,8 @@ class TypeTarif extends Model
     {
         return $this->hasMany(Stationnements::class);
     }
+    public function tarifParks()
+    {
+        return $this->hasMany(tarifParks::class);
+    }
 }

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 
+<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -310,3 +311,5 @@ header{
     background: #fff;
     color: #162938;
 }
+=======
+>>>>>>> d65d4f2 (Some Modification)

@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->float('prix');
             $table->foreignId('park')->constrained('parkings');
+            $table->foreignId('type')->constrained('type_tarifs');
             $table->timestamps();
         });
-    } 
+    }
 
     /** 
      * Reverse the migrations.

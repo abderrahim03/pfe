@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('dateStat');
             $table->integer('nbrUnit');
+            $table->integer('place');
             $table->foreignId('user')->constrained('users');
             $table->foreignId('park')->constrained('parkings');
             $table->foreignId('TarifPark')->constrained('tarif_parkings');

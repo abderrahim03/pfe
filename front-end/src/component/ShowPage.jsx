@@ -6,6 +6,8 @@ const ShowPage = () => {
     const {id} = useParams()
     const [parkings, setParkings] = useState([])
     const [TarifParks, setTarifParks] = useState([])
+    const [TypeTarifs, setTypeTarifs] = useState([])
+    const [TypeTarif, setTypeTarif] = useState({})
     const [TarifPark, setTarifPark] = useState({})
 
     const  getParkings = async () => {
@@ -18,18 +20,29 @@ const ShowPage = () => {
         setTarifParks(res.data.data); 
       })
     }
+    const  getTypeTarifs = async () => {
+      await axios.get('http://127.0.0.1:8000/api/type-tarifs').then((res, req) => {
+        setTypeTarifs(res.data.data);
+      })
+    }
     const getTarifPark = () => {
       TarifParks.forEach(TarifPark => {
         if (TarifPark.id == id) {
           setTarifPark(TarifPark)
+          for (const Type of TypeTarifs) {
+            if (TarifPark.type == Type.id) {   
+              setTypeTarif(Type)
+            }
+          }
         }
       });
+      
     }
 
     useEffect(() => {
         getParkings()
         getTarifParks() 
-        
+        getTypeTarifs() 
     }, [])
 
     useEffect(() => {
@@ -43,7 +56,12 @@ const ShowPage = () => {
         parkings.map((parking) => {
           if (parking.id == id) {
             return ( 
+<<<<<<< HEAD
                 <div key={parking.id} className="box mt-60">
+=======
+<<<<<<< HEAD
+                <div key={parking.id} className="box">
+>>>>>>> 1aaf982 (modify)
                    <div className='content'>
                     <h1 className='text-4xl py-16'>{parking.name}</h1>
                        <p className='mt-10 text-xl'>
@@ -54,6 +72,20 @@ const ShowPage = () => {
                     </div>
                   </div>   
                     
+=======
+              <div key={parking.id} className="ml-32 mt-20 max-w-lg  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div className=' bg-emerald-500 rounded-lg text-white text-center py-5 w-full font-mono text-3xl'>{parking.name}</div>
+                <div className='flex'>
+                  <div className='p-8 mt-10 mb-8'>
+                    <div className=' flex pb-2'><span className='text-lg mr-10'>Ville:</span><h5 className="ml-12">{parking.city}</h5></div>
+                    <div className=' flex pb-2'><span className='text-lg mr-9'>Place Libre:</span><p className="font-normal text-gray-700 dark:text-gray-400">{parking.nbrPlaceLibre}</p></div>
+                    <div className=' flex pb-2'><span className='text-lg mr-10'>Tarif:</span><p className="font-normal text-gray-700 dark:text-gray-400 ml-12">{TarifPark.prix} Dh</p></div>
+                    <div className=' flex pb-2'><span className='text-lg mr-10'>Type Tarif:</span><p className="font-normal text-gray-700 dark:text-gray-400 ml-12">{TypeTarif.type}</p></div>
+                  </div>
+                  <div className='w-full bg-black rounded-lg m-4'></div>
+                </div> 
+              </div>         
+>>>>>>> d65d4f2 (Some Modification)
             )
           }
         })

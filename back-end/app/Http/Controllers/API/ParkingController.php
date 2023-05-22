@@ -5,6 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Parking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 class ParkingController extends Controller
 {
@@ -19,6 +22,19 @@ class ParkingController extends Controller
         ], 200, ['Status' => 'Success']);
     }
 
+    public function getPlaceTable(Request $request)
+    {
+        $park = Parking::find($request->id);
+
+        $Places = DB::table($park->name)->select()->get();
+        
+        return response()->json([
+            'status' => 'Success',
+            'data' => $Places,
+        ], 200, ['Status' => 'Success']);
+
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -29,8 +45,23 @@ class ParkingController extends Controller
             'nbrPlace' => 'required',
             'nbrPlaceLibre' => 'required',
         ]);
+        
+        Schema::create($request->name, function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('park')->constrained('parkings');
+            $table->boolean('isLibre')->default(true);
+        });
 
-        return response()->json(Parking::create($request->all()));
+        $parking = Parking::create($request->all());
+
+        for ($i=0; $i < $request->nbrPlace; $i++) { 
+            DB::table($request->name)->insert([
+                'park' => $parking->id,
+                'isLibre' => true,
+            ]);
+        }
+
+        return response()->json($parking);
     }
 
     /**

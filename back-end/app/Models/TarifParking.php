@@ -11,10 +11,15 @@ class TarifParking extends Model
     protected $fillable = [
         'prix',
         'park',
+        'type',
     ];
 
     public function parkings()
     {
         return $this->hasMany(Parking::class);
+    }
+    public function typeTarifs()
+    {
+        return $this->hasMany(TypeTarif::class);
     }
 }

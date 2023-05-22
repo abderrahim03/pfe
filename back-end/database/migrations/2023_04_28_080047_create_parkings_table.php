@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('city');
             $table->integer('nbrPlace');
             $table->integer('nbrPlaceLibre');
+            $table->boolean('HasTable')->default(true);
             $table->timestamps();
         });
     }

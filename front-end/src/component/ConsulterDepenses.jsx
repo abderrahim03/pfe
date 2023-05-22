@@ -1,12 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const ConsulterDepenses = () => {
     const [parkings, setParkings] = useState([])
     const [TarifParks, setTarifParks] = useState([])
     const [Stationnements, setStationnements] = useState([])
+    const [pdfData, setPdfData] = useState(null);
+    const [pdfUrl, setPdfUrl] = useState('');
     const [du, setDu] = useState('')
     const [au, setAu] = useState('')
+    const user = 1
     const [isFiltering, setIsFiltering] = useState(false)
 
     const  getParkings = async () => {
@@ -25,6 +29,7 @@ const ConsulterDepenses = () => {
         })
     }
 
+
     useEffect(() => {
         getParkings()
         getTarifParks()
@@ -35,9 +40,11 @@ const ConsulterDepenses = () => {
         setIsFiltering(true)
     }
     let S = 0
+    
     return (
         <div>
             <h1 className='text-center text-5xl mt-4 text-sky-500'>Consulter Depenses</h1>
+<<<<<<< HEAD
             <div className='mt-16 rounded-xl p-11 for'>
                 <div className='flex input-box2 '>
                     <div  class="flex-shrink-0  inline-flex  py-2.5 px-4 text-sm font-medium text-center text-white  w-40 ">
@@ -52,14 +59,32 @@ const ConsulterDepenses = () => {
             <div className=' text-center'><button onClick={ConsulterDepenses} className=' bg-gradient-to-r from-sky-200   to-sky-600  rounded-full px-8 py-3 font-bold '>Consulter Depenses</button><br/><br/><br/></div>
              <div className=' text-center'>
                 <table className='border-collapse border border-slate-500  text-center bg-gradient-to-r from-sky-200   to-sky-600 '>
+=======
+            <div className=' flex mt-24'>
+                    <div  className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+                Du:
+            </div>
+            <input type='date' value={du} onChange={e => setDu(e.target.value)} className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' /></div><br/>
+            <div className=' flex'>
+                    <div  className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+                Au:
+            </div>  
+            <input type='date' value={au} onChange={e => setAu(e.target.value)} className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' /></div><br/>
+            <button onClick={ConsulterDepenses} className=' bg-gradient-to-r from-cyan-200   to-emerald-400  rounded-full px-8 py-3 font-bold '>Consulter Depenses</button><br/><br/><br/>
+            <div className=' text-center'>
+                <table className='table table-striped table-hover table-borderless'>
+>>>>>>> 1aaf982 (modify)
                     <thead>
-                        <tr className=' text-xl text-blue-950' >
-                            <th  className='border border-slate-600 p-4'>Nom du parking</th>
-                            <th className='border border-slate-600  p-4'>Ville</th>
-                            <th className='border border-slate-600 p-4'>Prix</th>
-                            <th className='border border-slate-600 p-4'>Nombre unité</th>
-                            <th className='border border-slate-600 p-4 '>Montant</th>
-                        </tr>
+                        <tr>
+                            <th >Nom du parking</th>
+                            <th>Ville</th>
+                            <th>Place</th>
+                            <th>Prix</th>
+                            <th>Nombre unité</th>
+                            <th>Montant</th>
+                            <th>Annuler</th>
+                            <th>Imprimer</th>
+                        </tr>   
                     </thead>
                     <tbody>
                         {
@@ -68,14 +93,63 @@ const ConsulterDepenses = () => {
                                     if (park.id == stat.park) {
                                         for (const TarifPark of TarifParks) {
                                             if (TarifPark.id == stat.TarifPark && stat.dateStat <= au && stat.dateStat >= du) {
-                                                S = S + stat.nbrUnit * TarifPark.prix
+                                                S = S + stat.nbrUnit * TarifPark.prix           
                                                 return (
-                                                    <tr >
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{park.name}</td>
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{park.city}</td>
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{TarifPark.prix}</td>
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{stat.nbrUnit}</td>
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{stat.nbrUnit * TarifPark.prix}</td>
+                                                    <tr key={stat.id}>
+                                                        <td>{park.name}</td>
+                                                        <td>{park.city}</td>
+                                                        <td>{stat.place}</td>
+                                                        <td>{TarifPark.prix}</td>
+                                                        <td>{stat.nbrUnit}</td>
+                                                        <td>{stat.nbrUnit * TarifPark.prix}</td>
+                                                        <td>
+                                                            <button type='button' onClick={() => {
+                                                                console.log(stat.id);
+                                                                axios.delete(`http://127.0.0.1:8000/api/Stationnements/${stat.id}`).then((res) => {
+                                                                    if (res.data.deleted) {
+                                                                        Swal.fire({ 
+                                                                            position: 'top-center',
+                                                                            icon: 'success',
+                                                                            title: res.data.message,
+                                                                            showConfirmButton: false,
+                                                                            timer: 2500
+                                                                        })
+                                                                        
+                                                                    }
+                                                                })
+                                                                }} className='btn btn-info'>
+                                                                Annuler
+                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            <button type='button' className='btn btn-warning' onClick={() => {
+                                                                try {
+                                                                    axios.post('http://127.0.0.1:8000/api/create-pdf', {
+                                                                        id: stat.id // Replace with the desired ID value
+                                                                    }).then(response => {
+
+                                                                        const { pdf } = response.data;
+    
+                                                                        // Create a temporary link element
+                                                                        const link = document.createElement('a');
+                                                                        link.href = `data:application/pdf;base64,${pdf}`;
+                                                                        link.setAttribute('download', 'document.pdf');
+                                                                        link.style.display = 'none';
+                                                                        document.body.appendChild(link);
+                                                                      
+                                                                        // Trigger the download
+                                                                        link.click();
+                                                                      
+                                                                        // Clean up the link element
+                                                                        document.body.removeChild(link);
+                                                                    })
+                                                                  } catch (error) {
+                                                                    console.log(error);
+                                                                  }
+                                                            }}>
+                                                                Imprimer
+                                                            </button>
+                                                        </td>
                                                     </tr>
                                                 )
                                             }
@@ -86,15 +160,72 @@ const ConsulterDepenses = () => {
                                 for (const park of parkings) {
                                     if (park.id == stat.park) {
                                         for (const TarifPark of TarifParks) {
-                                            if (TarifPark.id == stat.TarifPark) {
+                                            if (TarifPark.id == stat.TarifPark && stat.user == user) {
                                                 S = S + stat.nbrUnit * TarifPark.prix
                                                 return (
-                                                    <tr >
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{park.name}</td>
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{park.city}</td>
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{TarifPark.prix}</td>
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{stat.nbrUnit}</td>
-                                                        <td className='border border-slate-700  text-stone-800 text-blue-950'>{stat.nbrUnit * TarifPark.prix}</td>
+                                                    <tr key={stat.id}>
+                                                        <td>{park.name}</td>
+                                                        <td>{park.city}</td>
+                                                        <td>{stat.place}</td>
+                                                        <td>{TarifPark.prix}</td>
+                                                        <td>{stat.nbrUnit}</td>
+                                                        <td>{stat.nbrUnit * TarifPark.prix}</td>
+                                                        <td>
+                                                            <button type='button' onClick={() => {
+                                                                console.log(stat);
+                                                                axios.delete(`http://127.0.0.1:8000/api/Stationnements/${stat.id}`).then((res) => {
+                                                                    if (res.data.deleted) {
+                                                                        Swal.fire({ 
+                                                                            position: 'top-center',
+                                                                            icon: 'success',
+                                                                            title: res.data.message,
+                                                                            showConfirmButton: false,
+                                                                            timer: 2500
+                                                                        }) 
+                                                                    }
+                                                                })
+                                                                }} className='btn btn-info'>
+                                                                Annuler
+                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            <button type='button' className='btn btn-warning' onClick={() => {
+                                                                
+                                                                try {
+                                                                    axios.post('http://127.0.0.1:8000/api/create-pdf', {
+                                                                        id: stat.id,
+                                                                        name: park.name,
+                                                                        city: park.city,
+                                                                        place: stat.place,
+                                                                        prix: TarifPark.prix,
+                                                                        nbrUnit: stat.nbrUnit,
+                                                                        Montant: stat.nbrUnit * TarifPark.prix
+                                                                    }).then(response => {
+
+                                                                        const { pdf } = response.data;
+    
+                                                                        // Create a temporary link element
+                                                                        const link = document.createElement('a');
+                                                                        link.href = `data:application/pdf;base64,${pdf}`;
+                                                                        link.setAttribute('download', 'document.pdf');
+                                                                        link.style.display = 'none';
+                                                                        document.body.appendChild(link);
+                                                                      
+                                                                        // Trigger the download
+                                                                        link.click();
+                                                                      
+                                                                        // Clean up the link element
+                                                                        document.body.removeChild(link);
+                                                                    })
+                                                                  } catch (error) {
+                                                                    console.log(error);
+                                                                  }
+                                                                    
+                                                                    
+                                                            }}>
+                                                                Imprimer
+                                                            </button>
+                                                        </td>
                                                     </tr>
                                                 )
                                             }
@@ -109,10 +240,14 @@ const ConsulterDepenses = () => {
             </div>
             <div className='mt-10 text-center text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-900'>
                 Total: {S} dh
+<<<<<<< HEAD
             </div>   
             </div>
             
            
+=======
+            </div>
+>>>>>>> 1aaf982 (modify)
         </div>
     );
 };

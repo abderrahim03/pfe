@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -32,9 +33,28 @@ class UserController extends Controller
             'city' => 'required',
             'email' => 'required',
             'password' => 'required',
+            'cpassword' => 'required',
         ]);
+        if ($request->cpassword == $request->password) {
+            return response()->json([
+                User::create([
+                    'firstName' => $request->firstName,
+                    'lastName' => $request->lastName,
+                    'phone' => $request->phone,
+                    'city' => $request->city,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]),
+                'status' => true,
+                'message' => 'user Created successfully'
+            ]);
+        }else {
+            return response()->json([
+                'status' => false,
+                'message' => 'incorrect password!!'
+            ]);
+        }
 
-        return response()->json(User::create($request->all()));
     }
 
     /**

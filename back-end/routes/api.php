@@ -4,11 +4,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ParkingController;
+use App\Http\Controllers\API\PdfController;
 use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\StationnementController;
 use App\Http\Controllers\API\TarifParkingController;
 use App\Http\Controllers\API\TypeTarifController;
 use App\Http\Controllers\API\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +29,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('parkings', ParkingController::class);
 Route::apiResource('users', UserController::class);
+Route::post('Places-Park', [ParkingController::class, 'getPlaceTable']);
 Route::apiResource('type-tarifs', TypeTarifController::class);
 Route::apiResource('tarif-parkings', TarifParkingController::class);
 Route::apiResource('Stationnements', StationnementController::class);
+
+Route::get('getHtml', [PdfController::class, 'getHtml']);
+Route::post('create-pdf', [PdfController::class, 'createPDF']);
+
 
 Route::post('service', [ServiceController::class, 'getNbrStat']);
