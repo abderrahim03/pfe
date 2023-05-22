@@ -97,7 +97,7 @@ class StationnementController extends Controller
         $park = $parking->update($UpdateParking);
 
         DB::table($parking->name)->where('id', '=', $Stationnement->place)->update([ 'isLibre' => true ]);
-
+        
         return response()->json([
             'deleted' => $Stationnement->delete(),
             'park Updated' => $park,

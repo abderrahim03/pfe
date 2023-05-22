@@ -24,13 +24,10 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        
+    { 
         $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
-            'phone' => 'required',
-            'city' => 'required',
             'email' => 'required',
             'password' => 'required',
             'cpassword' => 'required',
@@ -40,8 +37,6 @@ class UserController extends Controller
                 User::create([
                     'firstName' => $request->firstName,
                     'lastName' => $request->lastName,
-                    'phone' => $request->phone,
-                    'city' => $request->city,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                 ]),

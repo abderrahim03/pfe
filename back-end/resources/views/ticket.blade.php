@@ -66,28 +66,6 @@
                 </div>
             </div>
         </div>
-        {{-- <table class="table table-striped table-hover table-borderless">
-            <thead>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Ville</th>
-                <th>Place</th>
-                <th>Prix</th>
-                <th>nbrUnit</th>
-                <th>Montant</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{$data['id']}}</td>
-                    <td>{{$data['name']}}</td>
-                    <td>{{$data['city']}}</td>
-                    <td>{{$data['place']}}</td>
-                    <td>{{$data['prix']}}</td>
-                    <td>{{$data['nbrUnit']}}</td>
-                    <td>{{$data['Montant']}}</td>
-                </tr>
-            </tbody>
-        </table> --}}
     </div>
 </body>
 </html>

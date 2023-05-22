@@ -8,14 +8,24 @@ const ChercherParking = () => {
     const [prix, setPrix] = useState('')
     const [parks, setParks] = useState([])
     const [isSearching, setIsSearching] = useState(false)
+    //get token from localStorage
+    const token = localStorage.getItem('token')
 
     const  getParkings = async () => {
-        await axios.get('http://127.0.0.1:8000/api/parkings').then((res, req) => {
+        await axios.get('http://127.0.0.1:8000/api/parkings', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then((res, req) => {
             setParkings(res.data.data); 
         })
     }
     const  getTarifParks = async () => {
-        await axios.get('http://127.0.0.1:8000/api/tarif-parkings').then((res, req) => {
+        await axios.get('http://127.0.0.1:8000/api/tarif-parkings', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then((res, req) => {
             setTarifParks(res.data.data); 
         })
     }

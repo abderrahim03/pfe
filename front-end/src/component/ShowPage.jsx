@@ -9,25 +9,38 @@ const ShowPage = () => {
     const [TypeTarifs, setTypeTarifs] = useState([])
     const [TypeTarif, setTypeTarif] = useState({})
     const [TarifPark, setTarifPark] = useState({})
+    const token = localStorage.getItem('token')
 
     const  getParkings = async () => {
-        await axios.get('http://127.0.0.1:8000/api/parkings').then((res, req) => {
-            setParkings(res.data.data); 
-        })
+        await axios.get('http://127.0.0.1:8000/api/parkings', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+      }).then((res, req) => {
+        setParkings(res.data.data); 
+      })
     }
     const  getTarifParks = async () => {
-      await axios.get('http://127.0.0.1:8000/api/tarif-parkings').then((res, req) => {
+      await axios.get('http://127.0.0.1:8000/api/tarif-parkings', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+    }).then((res, req) => {
         setTarifParks(res.data.data); 
       })
     }
     const  getTypeTarifs = async () => {
-      await axios.get('http://127.0.0.1:8000/api/type-tarifs').then((res, req) => {
+      await axios.get('http://127.0.0.1:8000/api/type-tarifs', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+    }).then((res, req) => {
         setTypeTarifs(res.data.data);
       })
     }
     const getTarifPark = () => {
       TarifParks.forEach(TarifPark => {
-        if (TarifPark.id == id) {
+        if (TarifPark.park == id) {
           setTarifPark(TarifPark)
           for (const Type of TypeTarifs) {
             if (TarifPark.type == Type.id) {   
@@ -36,18 +49,17 @@ const ShowPage = () => {
           }
         }
       });
-      
     }
 
     useEffect(() => {
-        getParkings()
-        getTarifParks() 
-        getTypeTarifs() 
-    }, [])
+      getParkings()
+      getTarifParks() 
+      getTypeTarifs() 
+  }, [])
 
-    useEffect(() => {
-      getTarifPark()
-    })
+  useEffect(() => {
+    getTarifPark()
+  })
 
 
   return (
@@ -56,6 +68,7 @@ const ShowPage = () => {
         parkings.map((parking) => {
           if (parking.id == id) {
             return ( 
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <div key={parking.id} className="box mt-60">
 =======
@@ -81,11 +94,19 @@ const ShowPage = () => {
                     <div className=' flex pb-2'><span className='text-lg mr-9'>Place Libre:</span><p className="font-normal text-gray-700 dark:text-gray-400">{parking.nbrPlaceLibre}</p></div>
                     <div className=' flex pb-2'><span className='text-lg mr-10'>Tarif:</span><p className="font-normal text-gray-700 dark:text-gray-400 ml-12">{TarifPark.prix} Dh</p></div>
                     <div className=' flex pb-2'><span className='text-lg mr-10'>Type Tarif:</span><p className="font-normal text-gray-700 dark:text-gray-400 ml-12">{TypeTarif.type}</p></div>
+=======
+              <div key={parking.id} className="box">
+                  <div className='content'>
+                  <h1 className='text-4xl py-16'>{parking.name}</h1>
+                      <p className='mt-10 text-xl'>
+                        <div className='flex  py-3' ><span >Ville:</span><p className='ml-28' >{parking.city}</p></div>
+                        <div className='flex py-3'><span >Place Libre:</span><p className='ml-12'>{parking.nbrPlaceLibre}</p></div>
+                        <div className='flex py-3' ><span >Tarif:</span><p className='ml-28' >{TarifPark.prix}</p></div>
+                        <div className='flex py-3' ><span >Type Tarif:</span><p className='ml-28' >{TypeTarif.type}</p></div>
+                      </p>
+>>>>>>> af0e920 (m)
                   </div>
-                  <div className='w-full bg-black rounded-lg m-4'></div>
-                </div> 
-              </div>         
->>>>>>> d65d4f2 (Some Modification)
+              </div>      
             )
           }
         })

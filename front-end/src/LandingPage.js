@@ -7,7 +7,14 @@ import ServiceNombre from './component/ServiceNombre';
 import ShowPage from './component/ShowPage';
 import Register from './login forms/Register';
 import Login from './login forms/Login';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom'
+=======
+import Account from './Account';
+import Connect from './component/Connect';
+import Home from './component/Home';
+import IsLogin from './component/IsLogin';
+>>>>>>> af0e920 (m)
 const LandingPage = () => {
     const id = useParams()
     const navigation = [
@@ -44,6 +51,9 @@ const LandingPage = () => {
                     <Route path='/show/:id' element={<ShowPage />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
+                    <Route path='/account' element={<Account />} />
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/connect' element={<Connect />} />
                 </Routes>
                 </div>
                 

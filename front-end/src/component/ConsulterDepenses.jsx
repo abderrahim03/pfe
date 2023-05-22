@@ -1,33 +1,47 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import './ConsulterDepenses.css'
+import { FaFileExport, FaDropbox } from "react-icons/fa";
+
 
 const ConsulterDepenses = () => {
     const [parkings, setParkings] = useState([])
     const [TarifParks, setTarifParks] = useState([])
     const [Stationnements, setStationnements] = useState([])
-    const [pdfData, setPdfData] = useState(null);
-    const [pdfUrl, setPdfUrl] = useState('');
     const [du, setDu] = useState('')
     const [au, setAu] = useState('')
-    const user = 1
+    const user = localStorage.getItem('userId')
     const [isFiltering, setIsFiltering] = useState(false)
+    const token = localStorage.getItem('token')
 
     const  getParkings = async () => {
-        await axios.get('http://127.0.0.1:8000/api/parkings').then((res, req) => {
+        await axios.get('http://127.0.0.1:8000/api/parkings', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then((res, req) => {
             setParkings(res.data.data); 
         })
     }
     const  getTarifParks = async () => {
-        await axios.get('http://127.0.0.1:8000/api/tarif-parkings').then((res, req) => {
+        await axios.get('http://127.0.0.1:8000/api/tarif-parkings', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then((res, req) => {
             setTarifParks(res.data.data); 
         })
     }
     const  getStationnements = async () => {
-        await axios.get('http://127.0.0.1:8000/api/Stationnements').then((res, req) => {
+        await axios.get('http://127.0.0.1:8000/api/Stationnements', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then((res, req) => {
             setStationnements(res.data.data); 
         })
-    }
+    } 
 
 
     useEffect(() => {
@@ -71,9 +85,14 @@ const ConsulterDepenses = () => {
             </div>  
             <input type='date' value={au} onChange={e => setAu(e.target.value)} className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' /></div><br/>
             <button onClick={ConsulterDepenses} className=' bg-gradient-to-r from-cyan-200   to-emerald-400  rounded-full px-8 py-3 font-bold '>Consulter Depenses</button><br/><br/><br/>
+<<<<<<< HEAD
             <div className=' text-center'>
                 <table className='table table-striped table-hover table-borderless'>
 >>>>>>> 1aaf982 (modify)
+=======
+            <div>
+                <table className='table table-striped table-hover table-borderless table-dark'>
+>>>>>>> af0e920 (m)
                     <thead>
                         <tr>
                             <th >Nom du parking</th>
@@ -105,7 +124,11 @@ const ConsulterDepenses = () => {
                                                         <td>
                                                             <button type='button' onClick={() => {
                                                                 console.log(stat.id);
-                                                                axios.delete(`http://127.0.0.1:8000/api/Stationnements/${stat.id}`).then((res) => {
+                                                                axios.delete(`http://127.0.0.1:8000/api/Stationnements/${stat.id}`, {
+                                                                    headers: {
+                                                                        'Authorization': `Bearer ${token}`,
+                                                                    },
+                                                                }).then((res) => {
                                                                     if (res.data.deleted) {
                                                                         Swal.fire({ 
                                                                             position: 'top-center',
@@ -118,7 +141,7 @@ const ConsulterDepenses = () => {
                                                                     }
                                                                 })
                                                                 }} className='btn btn-info'>
-                                                                Annuler
+                                                                <FaDropbox className='ml-5 text-blue-600'/>
                                                             </button>
                                                         </td>
                                                         <td>
@@ -147,7 +170,7 @@ const ConsulterDepenses = () => {
                                                                     console.log(error);
                                                                   }
                                                             }}>
-                                                                Imprimer
+                                                                <FaFileExport className='ml-5 text-blue-600'/>
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -173,7 +196,11 @@ const ConsulterDepenses = () => {
                                                         <td>
                                                             <button type='button' onClick={() => {
                                                                 console.log(stat);
-                                                                axios.delete(`http://127.0.0.1:8000/api/Stationnements/${stat.id}`).then((res) => {
+                                                                axios.delete(`http://127.0.0.1:8000/api/Stationnements/${stat.id}`, {
+                                                                    headers: {
+                                                                        'Authorization': `Bearer ${token}`,
+                                                                    },
+                                                                }).then((res) => {
                                                                     if (res.data.deleted) {
                                                                         Swal.fire({ 
                                                                             position: 'top-center',
@@ -184,8 +211,8 @@ const ConsulterDepenses = () => {
                                                                         }) 
                                                                     }
                                                                 })
-                                                                }} className='btn btn-info'>
-                                                                Annuler
+                                                                }}>
+                                                                <FaDropbox className='ml-5 text-blue-600'/>
                                                             </button>
                                                         </td>
                                                         <td>
@@ -217,13 +244,11 @@ const ConsulterDepenses = () => {
                                                                         // Clean up the link element
                                                                         document.body.removeChild(link);
                                                                     })
-                                                                  } catch (error) {
-                                                                    console.log(error);
-                                                                  }
-                                                                    
-                                                                    
+                                                                } catch (error) {
+                                                                console.log(error);
+                                                                }      
                                                             }}>
-                                                                Imprimer
+                                                                <FaFileExport className='ml-5 text-yellow-700'/>
                                                             </button>
                                                         </td>
                                                     </tr>
