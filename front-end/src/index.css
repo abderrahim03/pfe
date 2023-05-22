@@ -17,7 +17,7 @@
     align-items: center;
     width: 400px;
     height: 500рx;
-    background: transparent;
+    background: rgba(6, 12, 33,0.9);
     border: 5px solid #333;
     border-radius: 10px;
     transition: .5s;
@@ -91,10 +91,13 @@ h2{
     color: aliceblue;
     padding: 0 10px 0 35px;
 }
+.bg{
+    background: #060c21;
+}
 .for{
-    background: transparent;
+    background: rgba(6, 12, 33,0.7);
+    position: relative;
     border: 2px solid rgba(255,255,255,.5);
-    backdrop-filter: saturate(2);
     
 }
 .input-box2 select{
@@ -202,8 +205,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #060c21;
+    background-image: url('../src/images/bg_2.jpg');
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .box{
     position: relative;
@@ -211,7 +217,7 @@ body{
     height: 500px;
     display: flex;
     justify-content: center;
-    background: #060c21;
+    background: rgba(6, 12, 33,1);
 }
 .box:before{
     content: '';

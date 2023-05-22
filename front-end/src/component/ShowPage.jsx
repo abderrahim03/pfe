@@ -43,7 +43,7 @@ const ShowPage = () => {
         parkings.map((parking) => {
           if (parking.id == id) {
             return ( 
-                <div key={parking.id} className="box">
+                <div key={parking.id} className="box mt-60">
                    <div className='content'>
                     <h1 className='text-4xl py-16'>{parking.name}</h1>
                        <p className='mt-10 text-xl'>

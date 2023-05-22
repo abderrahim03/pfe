@@ -8,7 +8,7 @@ const Login = () => {
     
     return (
         < div>
-            <div class="wrapper">
+            <div class="wrapper mt-60">
                 <form action="">
                    <h2 className='text-3xl mt-20'>Login</h2>
                    <div class= "input-box">

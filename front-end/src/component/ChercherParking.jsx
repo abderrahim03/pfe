@@ -49,15 +49,16 @@ const ChercherParking = () => {
     }
 
     return (
-        <div>
+        <div >
             <h1 className='text-center text-5xl mt-4 text-sky-500'>Chercher Parking</h1>
-            <form>   
+            <div className='bg mt-24 rounded-xl p-11 for'>
+                 <form >   
                 <div class= "input-box1">
                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg aria-hidden="true" class="w-6 h-6  text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
                        <input type="text" placeholder="Saisir le prix"   required onChange={e => setPrix(e.target.value)}/>
-                       <button type="button" class="text-white absolute right-4 bottom-1.5 border border-gray-100 hover:shadow-teal-300 hover:shadow-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 " onClick={Searching}>Rechercher</button>
+                       <button type="button" class="text-white absolute right-4 bottom-1.5 border border-gray-100 hover:shadow-teal-300 hover:shadow-md hover:bg-sky-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 " onClick={Searching}>Rechercher</button>
                    </div>
             </form>
             <ul className=' grid grid-cols-3'>
@@ -77,6 +78,8 @@ const ChercherParking = () => {
                     })
                 }
             </ul>
+            </div>
+           
         </div>
     );
 };

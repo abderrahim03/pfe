@@ -38,19 +38,20 @@ const ConsulterDepenses = () => {
     return (
         <div>
             <h1 className='text-center text-5xl mt-4 text-sky-500'>Consulter Depenses</h1>
-            <div className=' flex mt-24'>
-                    <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+            <div className='mt-16 rounded-xl p-11 for'>
+                <div className='flex input-box2 '>
+                    <div  class="flex-shrink-0  inline-flex  py-2.5 px-4 text-sm font-medium text-center text-white  w-40 ">
                 Du:
             </div>
-            <input type='date' value={du} onChange={e => setDu(e.target.value)} className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' /></div><br/>
-            <div className=' flex'>
-                    <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+            <input type='date' value={du} onChange={e => setDu(e.target.value)} className=' ml-10 text-sm rounded-lg block w-1/2 p-2.5' /></div><br/>
+            <div className= 'flex input-box2'>
+                    <div  class="flex-shrink-0  inline-flex  py-2.5 px-4 text-sm font-medium text-center text-white  w-40">
                 Au:
             </div>  
-            <input type='date' value={au} onChange={e => setAu(e.target.value)} className=' ml-10 bg-green-50 border  border-emerald-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' /></div><br/>
-            <button onClick={ConsulterDepenses} className=' bg-gradient-to-r from-cyan-200   to-emerald-400  rounded-full px-8 py-3 font-bold '>Consulter Depenses</button><br/><br/><br/>
-            <div className=' text-center ml-80'>
-                <table className='border-collapse border border-slate-500  text-center bg-gradient-to-r from-cyan-200   to-emerald-400'>
+            <input type='date' value={au} onChange={e => setAu(e.target.value)} className='ml-10 text-sm rounded-lg block w-1/2 p-2.5' /></div><br/>
+            <div className=' text-center'><button onClick={ConsulterDepenses} className=' bg-gradient-to-r from-sky-200   to-sky-600  rounded-full px-8 py-3 font-bold '>Consulter Depenses</button><br/><br/><br/></div>
+             <div className=' text-center'>
+                <table className='border-collapse border border-slate-500  text-center bg-gradient-to-r from-sky-200   to-sky-600 '>
                     <thead>
                         <tr className=' text-xl text-blue-950' >
                             <th  className='border border-slate-600 p-4'>Nom du parking</th>
@@ -109,6 +110,9 @@ const ConsulterDepenses = () => {
             <div className='mt-10 text-center text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-900'>
                 Total: {S} dh
             </div>   
+            </div>
+            
+           
         </div>
     );
 };

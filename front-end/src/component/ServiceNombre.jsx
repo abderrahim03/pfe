@@ -40,8 +40,8 @@ const ServiceNombre = () => {
     return (
         <div>
             <h1 className='text-center text-5xl mt-4 text-sky-500'>Calculer le nombre de Stationnements</h1>
-
-            <div className=' flex mt-24'>
+            <div className='mt-24 rounded-xl p-11 for'>
+                <div className=' flex '>
     <div  class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-600 bg-cyan-100 border border-gray-300 rounded-lg w-40 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
         PARKING
     </div>
@@ -65,12 +65,15 @@ const ServiceNombre = () => {
             {/* Au:
                 <input type='date' value={au} onChange={e => setAu(e.target.value)} />  */}
 
-            <div className='text-center'> <button onClick={handelClick} className=' bg-gradient-to-r from-cyan-200   to-emerald-400  rounded-full px-8 py-3 font-bold '>Calculer</button></div><br /><br />
+            <div className='text-center'> <button onClick={handelClick} className='  bg-gradient-to-r from-sky-200   to-sky-600  rounded-full px-8 py-3 font-bold'>Calculer</button></div><br /><br />
 
 <div  className='mt-10 text-center text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-900'>
                 Le nombre de stationnements effectués est : {nbrStat} Stationnements.
 
 </div>
+            </div>
+
+            
         </div>
     );
 };
